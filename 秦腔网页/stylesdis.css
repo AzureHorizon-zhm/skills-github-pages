@@ -1,0 +1,59 @@
+/* 全局样式 */
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif SC', serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 导航栏样式 */
+header {
+    transition: all 0.3s ease;
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* 按钮动画效果 */
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* 图片悬停效果 */
+img {
+    transition: transform 0.5s ease;
+}
+
+img:hover:not(.no-hover) {
+    transform: scale(1.05);
+}
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .md-hidden {
+        display: none;
+    }
+}
+    

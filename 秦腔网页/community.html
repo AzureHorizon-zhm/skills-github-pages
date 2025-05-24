@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秦腔文化网 - 用户交流社区</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylescomm.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B0000',
+                        secondary: '#DAA520',
+                        neutral: '#F5F5DC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif SC', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral text-gray-800 min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <i class="fa fa-music text-xl mr-2"></i>
+                <h1 class="text-xl font-serif font-bold">秦腔文化网</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-secondary transition-colors">首页</a>
+                <a href="discovery.html" class="hover:text-secondary transition-colors">发现</a>
+                <a href="community.html" class="text-secondary border-b-2 border-secondary pb-1">社区</a>
+                <a href="profile.html" class="hover:text-secondary transition-colors">我的</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <i class="fa fa-bell cursor-pointer"></i>
+                    <span class="absolute -top-1 -right-1 bg-secondary text-primary text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-2">
+                    <img src="https://picsum.photos/id/1074/100/100" alt="用户头像" class="w-8 h-8 rounded-full object-cover">
+                    <span>秦腔爱好者</span>
+                </div>
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div class="md:hidden bg-primary border-t border-white/10 hidden" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#" class="py-2 hover:text-secondary transition-colors">首页</a>
+                <a href="#" class="py-2 hover:text-secondary transition-colors">发现</a>
+                <a href="#" class="py-2 text-secondary">社区</a>
+                <a href="#" class="py-2 hover:text-secondary transition-colors">我的</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- 社区横幅 -->
+        <section class="relative h-40 md:h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/1056/1600/800" alt="秦腔社区" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                <h2 class="text-2xl md:text-4xl font-serif font-bold text-white">秦腔爱好者社区</h2>
+            </div>
+        </section>
+
+        <!-- 社区分类导航 -->
+        <section class="bg-white sticky top-16 z-40 shadow-sm">
+            <div class="container mx-auto px-4 py-3 overflow-x-auto scrollbar-hide">
+                <div class="flex space-x-2 min-w-max">
+                    <button class="px-4 py-2 bg-primary text-white rounded-full">全部</button>
+                    <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">剧目讨论</button>
+                    <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">技艺交流</button>
+                    <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">文创分享</button>
+                    <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">秦腔动态</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 发布帖子区域 -->
+        <section class="py-6 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="bg-neutral rounded-lg p-4 shadow-sm">
+                    <div class="flex space-x-3">
+                        <img src="https://picsum.photos/id/1057/100/100" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                        <div class="flex-grow">
+                            <input type="text" placeholder="分享你的秦腔心得..." class="w-full px-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                            <div class="flex justify-between mt-3">
+                                <div class="flex space-x-3">
+                                    <button class="text-gray-600 hover:text-primary transition-colors">
+                                        <i class="fa fa-image mr-1"></i>
+                                        <span class="text-sm">图片</span>
+                                    </button>
+                                    <button class="text-gray-600 hover:text-primary transition-colors">
+                                        <i class="fa fa-video-camera mr-1"></i>
+                                        <span class="text-sm">视频</span>
+                                    </button>
+                                    <button class="text-gray-600 hover:text-primary transition-colors">
+                                        <i class="fa fa-smile-o mr-1"></i>
+                                        <span class="text-sm">表情</span>
+                                    </button>
+                                </div>
+                                <button class="bg-primary hover:bg-primary/90 text-white px-4 py-1 rounded-full text-sm transition-colors">发布</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门话题 -->
+        <section class="py-6 bg-white">
+            <div class="container mx-auto px-4">
+                <h3 class="text-lg font-bold mb-4">热门话题</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <a href="#" class="bg-neutral rounded-lg p-3 flex items-center space-x-2 hover:shadow-md transition-shadow">
+                        <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <i class="fa fa-comments"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-sm">《三滴血》新演绎</h4>
+                            <p class="text-xs text-gray-500">2.3k讨论</p>
+                        </div>
+                    </a>
+                    <a href="#" class="bg-neutral rounded-lg p-3 flex items-center space-x-2 hover:shadow-md transition-shadow">
+                        <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <i class="fa fa-microphone"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-sm">秦腔唱腔技巧</h4>
+                            <p class="text-xs text-gray-500">1.8k讨论</p>
+                        </div>
+                    </a>
+                    <a href="#" class="bg-neutral rounded-lg p-3 flex items-center space-x-2 hover:shadow-md transition-shadow">
+                        <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <i class="fa fa-paint-brush"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-sm">秦腔脸谱设计</h4>
+                            <p class="text-xs text-gray-500">1.5k讨论</p>
+                        </div>
+                    </a>
+                    <a href="#" class="bg-neutral rounded-lg p-3 flex items-center space-x-2 hover:shadow-md transition-shadow">
+                        <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-sm">秦小吼生日会</h4>
+                            <p class="text-xs text-gray-500">3.7k讨论</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 帖子列表 -->
+        <section class="py-6 bg-neutral">
+            <div class="container mx-auto px-4">
+                <!-- 帖子1 -->
+                <div class="bg-white rounded-xl shadow-sm mb-6 overflow-hidden">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://picsum.photos/id/1058/100/100" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-medium">秦腔爱好者123</h4>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <span>2小时前</span>
+                                    <span class="mx-2">·</span>
+                                    <span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-xs">《三滴血》</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-bold text-lg mb-2">《三滴血》中"虎口缘"一折的情感分析</h3>
+                        <p class="text-gray-700 text-sm mb-3">
+                            今天看了李梅老师表演的《三滴血》中"虎口缘"一折，被深深打动。尤其是贾莲香与周天佑的情感纠葛，通过唱念做打表现得淋漓尽致...
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-2 mb-3">
+                            <img src="https://picsum.photos/id/1059/600/340" alt="秦腔表演" class="w-full h-32 object-cover rounded-lg">
+                            <img src="https://picsum.photos/id/1060/600/340" alt="秦腔表演" class="w-full h-32 object-cover rounded-lg">
+                        </div>
+                        
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                            <div class="flex space-x-6">
+                                <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                    <i class="fa fa-thumbs-o-up mr-1"></i>
+                                    <span>128</span>
+                                </button>
+                                <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                    <i class="fa fa-comment-o mr-1"></i>
+                                    <span>36</span>
+                                </button>
+                                <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                    <i class="fa fa-share-alt mr-1"></i>
+                                    <span>12</span>
+                                </button>
+                            </div>
+                            <button class="text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-bookmark-o"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- 评论区 -->
+                    <div class="bg-neutral/50 p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://picsum.photos/id/1074/100/100" alt="用户头像" class="w-8 h-8 rounded-full object-cover">
+                            <input type="text" placeholder="发表评论..." class="flex-grow px-3 py-2 rounded-full text-sm border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                        </div>
+                        
+                        <div class="mt-3">
+                            <div class="flex items-start space-x-3 mb-3">
+                                <img src="https://picsum.photos/id/1062/100/100" alt="用户头像" class="w-8 h-8 rounded-full object-cover">
+                                <div class="bg-white rounded-lg p-3 flex-grow">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <h5 class="font-medium text-sm">戏迷老张</h5>
+                                        <span class="text-xs text-gray-500">1小时前</span>
+                                    </div>
+                                    <p class="text-gray-700 text-sm">
+                                        我也非常喜欢这一折！李梅老师的表演确实无可挑剔，尤其是眼神和手势，把贾莲香的那种矛盾心理表现得入木三分。
+                                    </p>
+                                    <div class="flex items-center mt-2 space-x-4 text-xs text-gray-500">
+                                        <button class="hover:text-primary transition-colors">
+                                            <i class="fa fa-thumbs-o-up mr-1"></i>
+                                            <span>24</span>
+                                        </button>
+                                        <button class="hover:text-primary transition-colors">
+                                            <i class="fa fa-reply mr-1"></i>
+                                            <span>回复</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="text-primary text-sm hover:underline">查看全部36条评论</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 帖子2 -->
+                <div class="bg-white rounded-xl shadow-sm mb-6 overflow-hidden">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://picsum.photos/id/1063/100/100" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-medium">秦腔研习者</h4>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <span>昨天 15:30</span>
+                                    <span class="mx-2">·</span>
+                                    <span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-xs">《斩单通》</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-bold text-lg mb-2">从《斩单通》看秦腔净角的表演艺术</h3>
+                        <p class="text-gray-700 text-sm mb-3">
+                            秦腔净角在表演上有着独特的艺术风格，尤其是在《斩单通》中，单雄信这个角色需要演员具备深厚的表演功底...
+                        </p>
+                        
+                        <div class="aspect-video rounded-lg overflow-hidden mb-3 relative">
+                            <img src="https://picsum.photos/id/1064/800/450" alt="秦腔表演" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-12 h-12 bg-primary/80 rounded-full flex items-center justify-center cursor-pointer">
+                                    <i class="fa fa-play text-white"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                            <div class="flex space-x-6">
+                                <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                    <i class="fa fa-thumbs-o-up mr-1"></i>
+                                    <span>96</span>
+                                </button>
+                                <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                    <i class="fa fa-comment-o mr-1"></i>
+                                    <span>28</span>
+                                </button>
+                                <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                    <i class="fa fa-share-alt mr-1"></i>
+                                    <span>8</span>
+                                </button>
+                            </div>
+                            <button class="text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-bookmark-o"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 帖子3 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <img src="https://picsum.photos/id/1065/100/100" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-medium">秦腔学习者</h4>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <span>3天前</span>
+                                    <span class="mx-2">·</span>
+                                    <span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-xs">唱腔练习</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-bold text-lg mb-2">请教各位老师，如何练习秦腔的"二六板"唱腔？</h3>
+                        <p class="text-gray-700 text-sm mb-3">
+                            我是秦腔的初学者，最近在练习"二六板"的唱腔，但总觉得节奏和韵律把握不好。特别是在拖腔的时候，感觉气息不够用...
+                        </p>
+                        
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                            <div class="flex space-x-6">
+                                <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                    <i class="fa fa-thumbs-o-up mr-1"></i>
+                                    <span>42</span>
+                                </button>
+                                <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                    <i class="fa fa-comment-o mr-1"></i>
+                                    <span>18</span>
+                                </button>
+                                <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                    <i class="fa fa-share-alt mr-1"></i>
+                                    <span>5</span>
+                                </button>
+                            </div>
+                            <button class="text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-bookmark-o"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 虚拟偶像动态 -->
+        <section class="py-6 bg-white">
+            <div class="container mx-auto px-4">
+                <h3 class="text-lg font-bold mb-4">虚拟偶像动态</h3>
+                
+                <div class="bg-neutral rounded-xl p-4 shadow-sm mb-6">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <img src="https://picsum.photos/id/1076/100/100" alt="秦小吼" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-medium">秦小吼</h4>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <span>刚刚</span>
+                                <span class="mx-2">·</span>
+                                <span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-xs">新作品发布</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-bold text-lg mb-2">我的全新秦腔数字单曲《丝路秦韵》发布啦！</h3>
+                    <p class="text-gray-700 text-sm mb-3">
+                        融合了传统秦腔元素与现代音乐风格，希望大家能够喜欢！欢迎各位秦腔爱好者试听和分享～
+                    </p>
+                    
+                    <div class="bg-white rounded-lg p-3 flex items-center space-x-3 mb-3">
+                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                            <i class="fa fa-music"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="font-medium text-sm">丝路秦韵</h4>
+                            <p class="text-xs text-gray-500">秦小吼 · 2:45</p>
+                        </div>
+                        <button class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white">
+                            <i class="fa fa-play text-xs"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="flex justify-between items-center pt-3 border-t border-gray-100">
+                        <div class="flex space-x-6">
+                            <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-thumbs-o-up mr-1"></i>
+                                <span>328</span>
+                            </button>
+                            <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-comment-o mr-1"></i>
+                                <span>46</span>
+                            </button>
+                            <button class="flex items-center text-gray-500 hover:text-primary transition-colors">
+                                <i class="fa fa-share-alt mr-1"></i>
+                                <span>28</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <a href="#" class="text-primary hover:underline">查看更多动态</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <i class="fa fa-music text-xl"></i>
+                        <h3 class="text-lg font-serif font-bold">秦腔文化网</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-3">
+                        传承秦腔文化，弘扬民族艺术
+                    </p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="text-white hover:text-secondary transition-colors">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-secondary transition-colors">
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-secondary transition-colors">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-3">快速链接</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">秦腔简介</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">名家名段</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">演出信息</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-3">社区</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">用户交流社区</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">虚拟偶像</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">文创产品</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">活动日历</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-3">联系我们</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start space-x-2">
+                            <i class="fa fa-map-marker mt-1"></i>
+                            <span class="text-gray-300">陕西省西安市碑林区文艺北路133号</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa fa-phone"></i>
+                            <span class="text-gray-300">029-87801234</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="text-gray-300">contact@qinopera.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-6 pt-6 text-center text-gray-400 text-sm">
+                © 2025 秦腔文化网. 保留所有权利.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 点赞功能
+        document.querySelectorAll('.fa-thumbs-o-up').forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.classList.toggle('text-primary');
+            });
+        });
+        
+        // 收藏功能
+        document.querySelectorAll('.fa-bookmark-o').forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.classList.toggle('text-primary');
+            });
+        });
+        
+        // 评论提交
+        document.querySelectorAll('input[placeholder="发表评论..."]').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && this.value.trim() !== '') {
+                    alert('评论功能将在未来版本中实现');
+                }
+            });
+        });
+    </script>
+</body>
+</html>    

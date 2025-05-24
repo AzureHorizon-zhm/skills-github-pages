@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秦腔文化网 - 发现</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylesdis.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B0000', // 深红色主色调
+                        secondary: '#DAA520', // 金色辅助色
+                        neutral: '#F5F5DC', // 米白色中性色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Noto Serif SC', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .card-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            }
+            .nav-link-active {
+                border-bottom: 2px solid #DAA520;
+                color: #DAA520;
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral text-gray-800 min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-primary/95 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-music text-2xl"></i>
+                <h1 class="text-xl md:text-2xl font-serif font-bold">秦腔文化网</h1>
+            </div>
+            
+            <!-- 桌面导航 -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="font-medium hover:text-secondary transition-colors duration-300">首页</a>
+                <a href="discovery.html" class="font-medium nav-link-active transition-colors duration-300">发现</a>
+                <a href="community.html" class="font-medium hover:text-secondary transition-colors duration-300">用户交流社区</a>
+                <a href="profile.html" class="font-medium hover:text-secondary transition-colors duration-300">我的</a>
+            </nav>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary/95 border-t border-white/20">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="index.html" class="font-medium hover:text-secondary transition-colors duration-300 py-2 border-b border-white/10">首页</a>
+                <a href="#" class="font-medium nav-link-active transition-colors duration-300 py-2 border-b border-white/10">发现</a>
+                <a href="#" class="font-medium hover:text-secondary transition-colors duration-300 py-2 border-b border-white/10">用户交流社区</a>
+                <a href="#" class="font-medium hover:text-secondary transition-colors duration-300 py-2">我的</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- 页面横幅 -->
+        <section class="relative h-48 md:h-64 overflow-hidden">
+            <div class="absolute inset-0 bg-black/50 z-10"></div>
+            <img src="https://picsum.photos/id/1041/1600/800" alt="秦腔发现" class="w-full h-full object-cover">
+            <div class="absolute inset-0 z-20 flex items-center justify-center px-4">
+                <h2 class="text-[clamp(1.8rem,4vw,3rem)] font-serif font-bold text-white text-shadow">探索秦腔文化</h2>
+            </div>
+        </section>
+
+        <!-- 内容导航 -->
+        <section class="bg-white">
+            <div class="container mx-auto px-4 py-6">
+                <div class="flex flex-wrap gap-4">
+                    <a href="#knowledge" class="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors duration-300">
+                        秦腔知识库
+                    </a>
+                    <a href="#multimedia" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-300">
+                        多媒体资源库
+                    </a>
+                    <a href="#activities" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-300">
+                        文化活动专区
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 秦腔知识库 -->
+        <section id="knowledge" class="py-16 bg-neutral">
+            <div class="container mx-auto px-4">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-serif font-bold text-primary mb-12 text-center">秦腔知识库</h2>
+                
+                <!-- 历史文化 -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold text-primary mb-6">历史文化</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md p-6 card-hover">
+                            <h4 class="text-xl font-bold text-gray-800 mb-4">起源与发展</h4>
+                            <p class="text-gray-700 mb-4">
+                                秦腔起源于古代陕西、甘肃一带，因以枣木梆子为击节乐器，又称"梆子腔"，是中国汉族最古老的戏剧之一，起于西周，成熟于秦。
+                            </p>
+                            <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-4">
+                                <img src="https://picsum.photos/id/1042/800/450" alt="秦腔起源" class="w-full h-full object-cover">
+                            </div>
+                            <p class="text-gray-700">
+                                秦腔形成后，流传全国各地，对许多剧种都有不同程度的影响。明清时期，秦腔进入北京，直接影响了京剧的形成。
+                            </p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md p-6 card-hover">
+                            <h4 class="text-xl font-bold text-gray-800 mb-4">服饰与道具</h4>
+                            <p class="text-gray-700 mb-4">
+                                秦腔的服饰和道具有着严格的规范和讲究，不同的角色行当有着不同的着装要求，色彩鲜艳，图案精美，具有浓郁的民族特色。
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden">
+                                    <img src="https://picsum.photos/id/1043/400/400" alt="秦腔服饰" class="w-full h-full object-cover">
+                                </div>
+                                <div class="aspect-square bg-gray-100 rounded-lg overflow-hidden">
+                                    <img src="https://picsum.photos/id/1044/400/400" alt="秦腔道具" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <p class="text-gray-700">
+                                随着时代的发展，秦腔的服饰和道具也在不断创新和改进，但始终保持着传统的艺术特色。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 艺术特色 -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold text-primary mb-6">艺术特色</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md p-6 card-hover">
+                            <div class="aspect-square bg-primary/10 rounded-full flex items-center justify-center mb-4 w-20 h-20 mx-auto">
+                                <i class="fa fa-music text-3xl text-primary"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-3 text-center">唱腔板式</h4>
+                            <p class="text-gray-700">
+                                秦腔的唱腔分为"板路"和"彩腔"两部分，每部分均有欢音和苦音之分。板路有慢板、二六板、代板、起板、尖板、滚板等六类基本板式。
+                            </p>
+                            <div class="mt-4">
+                                <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden">
+                                    <img src="https://picsum.photos/id/1045/400/225" alt="秦腔唱腔" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md p-6 card-hover">
+                            <div class="aspect-square bg-primary/10 rounded-full flex items-center justify-center mb-4 w-20 h-20 mx-auto">
+                                <i class="fa fa-user text-3xl text-primary"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-3 text-center">行当分类</h4>
+                            <p class="text-gray-700">
+                                秦腔的角色行当分为四生、六旦、二净、一丑，共计十三门，又称"十三头网子"。四生包括老生、须生、小生、幼生；六旦包括老旦、正旦、小旦、花旦、武旦、媒旦。
+                            </p>
+                            <div class="mt-4">
+                                <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden">
+                                    <img src="https://picsum.photos/id/1046/400/225" alt="秦腔行当" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md p-6 card-hover">
+                            <div class="aspect-square bg-primary/10 rounded-full flex items-center justify-center mb-4 w-20 h-20 mx-auto">
+                                <i class="fa fa-paint-brush text-3xl text-primary"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-3 text-center">脸谱艺术</h4>
+                            <p class="text-gray-700">
+                                秦腔脸谱是中国传统戏曲中重要的组成部分，有着丰富的文化内涵和独特的艺术风格。每个脸谱都有特定的谱式和色彩，表现人物的性格和品质。
+                            </p>
+                            <div class="mt-4">
+                                <div class="aspect-video bg-gray-100 rounded-lg overflow-hidden">
+                                    <img src="https://picsum.photos/id/1047/400/225" alt="秦腔脸谱" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 经典剧目 -->
+                <div>
+                    <h3 class="text-2xl font-bold text-primary mb-6">经典剧目</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- 剧目1 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1048/600/400" alt="三滴血" class="w-full h-48 object-cover">
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                    <h4 class="text-xl font-bold text-white">三滴血</h4>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">传统剧目</span>
+                                    <div class="flex items-center">
+                                        <i class="fa fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.9</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-4">
+                                    《三滴血》是秦腔的经典剧目之一，讲述了晋信书因迷信"滴血认亲"的故事，展现了亲情、友情和爱情的纠葛。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="text-sm text-gray-600"><i class="fa fa-clock-o mr-1"></i> 150分钟</span>
+                                    <span class="text-sm text-gray-600"><i class="fa fa-users mr-1"></i> 须生、小生、小旦</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <button class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+                                        查看详情
+                                    </button>
+                                    <button class="border border-gray-300 hover:border-primary hover:text-primary text-gray-600 py-2 px-4 rounded-lg transition-colors duration-300">
+                                        <i class="fa fa-heart-o"></i> 收藏
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 剧目2 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1049/600/400" alt="斩单通" class="w-full h-48 object-cover">
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                    <h4 class="text-xl font-bold text-white">斩单通</h4>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">传统剧目</span>
+                                    <div class="flex items-center">
+                                        <i class="fa fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.8</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-4">
+                                    《斩单通》是秦腔经典武生戏，讲述了唐代单雄信因兄长被李渊所杀，誓死不降唐，最终被李世民所斩的故事。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="text-sm text-gray-600"><i class="fa fa-clock-o mr-1"></i> 120分钟</span>
+                                    <span class="text-sm text-gray-600"><i class="fa fa-users mr-1"></i> 净角、老生</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <button class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+                                        查看详情
+                                    </button>
+                                    <button class="border border-gray-300 hover:border-primary hover:text-primary text-gray-600 py-2 px-4 rounded-lg transition-colors duration-300">
+                                        <i class="fa fa-heart-o"></i> 收藏
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 剧目3 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1050/600/400" alt="窦娥冤" class="w-full h-48 object-cover">
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                    <h4 class="text-xl font-bold text-white">窦娥冤</h4>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">传统剧目</span>
+                                    <div class="flex items-center">
+                                        <i class="fa fa-star text-yellow-400"></i>
+                                        <span class="ml-1 text-gray-600">4.7</span>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-4">
+                                    《窦娥冤》是元代关汉卿的代表作，讲述了窦娥被冤枉致死的悲惨遭遇，反映了当时社会的黑暗和人民的苦难。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="text-sm text-gray-600"><i class="fa fa-clock-o mr-1"></i> 130分钟</span>
+                                    <span class="text-sm text-gray-600"><i class="fa fa-users mr-1"></i> 正旦、老生</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <button class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300">
+                                        查看详情
+                                    </button>
+                                    <button class="border border-gray-300 hover:border-primary hover:text-primary text-gray-600 py-2 px-4 rounded-lg transition-colors duration-300">
+                                        <i class="fa fa-heart-o"></i> 收藏
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-10">
+                        <a href="#" class="inline-block bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300">
+                            查看更多剧目
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 多媒体资源库 -->
+        <section id="multimedia" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-serif font-bold text-primary mb-12 text-center">多媒体资源库</h2>
+                
+                <!-- 资源库导航 -->
+                <div class="flex flex-wrap gap-4 justify-center mb-10">
+                    <button class="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors duration-300">
+                        演出视频
+                    </button>
+                    <button class="px-6 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-300">
+                        音频资源
+                    </button>
+                    <button class="px-6 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-300">
+                        数字藏品
+                    </button>
+                </div>
+                
+                <!-- 演出视频 -->
+                <div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- 视频1 -->
+                        <div class="bg-neutral rounded-xl overflow-hidden shadow-md card-hover">
+                            <div class="relative aspect-video">
+                                <img src="https://picsum.photos/id/1051/600/340" alt="秦腔《三滴血》选段" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-16 h-16 bg-primary/80 rounded-full flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110">
+                                        <i class="fa fa-play text-white text-xl"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute top-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                    12:34
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="text-lg font-bold text-gray-800 mb-2">秦腔《三滴血》选段 - 虎口缘</h4>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-sm text-gray-600">李梅 饰 贾莲香</span>
+                                    <span class="text-sm text-gray-500">2.3万次观看</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fa fa-calendar mr-1"></i>
+                                    <span>2025-03-15</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 视频2 -->
+                        <div class="bg-neutral rounded-xl overflow-hidden shadow-md card-hover">
+                            <div class="relative aspect-video">
+                                <img src="https://picsum.photos/id/1052/600/340" alt="秦腔《斩单通》" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-16 h-16 bg-primary/80 rounded-full flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110">
+                                        <i class="fa fa-play text-white text-xl"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute top-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                    28:45
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="text-lg font-bold text-gray-800 mb-2">秦腔《斩单通》全本</h4>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-sm text-gray-600">张涛 饰 单雄信</span>
+                                    <span class="text-sm text-gray-500">1.8万次观看</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fa fa-calendar mr-1"></i>
+                                    <span>2025-02-20</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 视频3 -->
+                        <div class="bg-neutral rounded-xl overflow-hidden shadow-md card-hover">
+                            <div class="relative aspect-video">
+                                <img src="https://picsum.photos/id/1053/600/340" alt="秦小吼虚拟教学" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-16 h-16 bg-primary/80 rounded-full flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110">
+                                        <i class="fa fa-play text-white text-xl"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute top-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                    18:20
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="text-lg font-bold text-gray-800 mb-2">秦小吼教你学秦腔 - 唱腔技巧</h4>
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-sm text-gray-600">虚拟形象 秦小吼</span>
+                                    <span class="text-sm text-gray-500">3.5万次观看</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fa fa-calendar mr-1"></i>
+                                    <span>2025-04-05</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-10">
+                        <a href="#" class="inline-block bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300">
+                            查看更多视频
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 文化活动专区 -->
+        <section id="activities" class="py-16 bg-neutral">
+            <div class="container mx-auto px-4">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-serif font-bold text-primary mb-12 text-center">文化活动专区</h2>
+                
+                <!-- 活动导航 -->
+                <div class="flex flex-wrap gap-4 justify-center mb-10">
+                    <button class="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors duration-300">
+                        线上活动
+                    </button>
+                    <button class="px-6 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-300">
+                        线下活动
+                    </button>
+                </div>
+                
+                <!-- 线上活动 -->
+                <div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- 活动1 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row card-hover">
+                            <div class="md:w-1/3 h-48 md:h-auto relative">
+                                <img src="https://picsum.photos/id/1054/600/400" alt="秦腔云剧场" class="w-full h-full object-cover">
+                                <div class="absolute top-3 left-3 bg-secondary text-primary font-bold px-3 py-1 rounded-full text-sm">
+                                    直播中
+                                </div>
+                            </div>
+                            <div class="md:w-2/3 p-6">
+                                <h3 class="text-xl font-bold text-primary mb-2">秦腔云剧场 - 周末经典展演</h3>
+                                <div class="flex items-center text-sm text-gray-600 mb-3">
+                                    <i class="fa fa-clock-o mr-1"></i>
+                                    <span>2025-06-29 19:30-21:30</span>
+                                </div>
+                                <p class="text-gray-700 mb-4">
+                                    本周末云剧场将呈现经典秦腔剧目《白蛇传》，由国家一级演员齐爱云领衔主演，欢迎广大戏迷在线观看。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">线上直播</span>
+                                    <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">经典剧目</span>
+                                    <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">免费</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <button class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300">
+                                        立即观看
+                                    </button>
+                                    <button class="border border-gray-300 hover:border-primary hover:text-primary text-gray-600 py-2 px-4 rounded-lg transition-colors duration-300">
+                                        <i class="fa fa-bell-o"></i> 提醒我
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 活动2 -->
+                        <div class="bg-white rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row card-hover">
+                            <div class="md:w-1/3 h-48 md:h-auto relative">
+                                <img src="https://picsum.photos/id/1055/600/400" alt="秦腔文创设计大赛" class="w-full h-full object-cover">
+                                <div class="absolute top-3 left-3 bg-green-500 text-white font-bold px-3 py-1 rounded-full text-sm">
+                                    进行中
+                                </div>
+                            </div>
+                            <div class="md:w-2/3 p-6">
+                                <h3 class="text-xl font-bold text-primary mb-2">秦腔文化创意设计大赛</h3>
+                                <div class="flex items-center text-sm text-gray-600 mb-3">
+                                    <i class="fa fa-calendar mr-1"></i>
+                                    <span>投稿截止：2025-07-15</span>
+                                </div>
+                                <p class="text-gray-700 mb-4">
+                                    本次大赛以"秦腔新声"为主题，征集与秦腔文化相关的创意设计作品，包括但不限于文创产品、数字艺术、服装设计等。
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">创意大赛</span>
+                                    <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">线上投稿</span>
+                                    <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">奖金丰厚</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <button class="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300">
+                                        立即报名
+                                    </button>
+                                    <button class="border border-gray-300 hover:border-primary hover:text-primary text-gray-600 py-2 px-4 rounded-lg transition-colors duration-300">
+                                        查看详情
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-10">
+                        <a href="#" class="inline-block bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded-full transition-all duration-300">
+                            查看更多线上活动
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa fa-music text-2xl"></i>
+                        <h3 class="text-xl font-serif font-bold">秦腔文化网</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">传承秦腔文化，弘扬民族精神</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-secondary transition-colors duration-300">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-secondary transition-colors duration-300">
+                            <i class="fa fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-secondary transition-colors duration-300">
+                            <i class="fa fa-youtube-play text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-secondary transition-colors duration-300">
+                            <i class="fa fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-secondary transition-colors duration-300">首页</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300">发现</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300">用户交流社区</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300">我的</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300">文创商店</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">资源中心</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300">秦腔知识库</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300">经典剧目</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300">非遗传承人</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300">秦腔教学</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300">学术研究</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">联系我们</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker mt-1 mr-3 text-secondary"></i>
+                            <span class="text-gray-300">陕西省西安市碑林区文艺北路197号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-3 text-secondary"></i>
+                            <span class="text-gray-300">029-8782****</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-3 text-secondary"></i>
+                            <span class="text-gray-300">contact@qinopera.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-10 pt-6 text-center text-gray-400">
+                <p>© 2025 秦腔文化网 版权所有 | 陕ICP备XXXXXXXX号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 页面滚动时导航栏样式变化
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-3');
+            } else {
+                header.classList.add('py-3');
+                header.classList.remove('py-2');
+            }
+        });
+        
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+    

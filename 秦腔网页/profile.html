@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>秦腔文化网 - 个人中心</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylesprof.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B0000',
+                        secondary: '#DAA520',
+                        neutral: '#F5F5DC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Noto Serif SC', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral text-gray-800 min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-primary text-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <i class="fa fa-music text-xl mr-2"></i>
+                <h1 class="text-xl font-serif font-bold">秦腔文化网</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html" class="hover:text-secondary transition-colors">首页</a>
+                <a href="discovery.html" class="hover:text-secondary transition-colors">发现</a>
+                <a href="community.html" class="hover:text-secondary transition-colors">社区</a>
+                <a href="profile.html" class="text-secondary border-b-2 border-secondary pb-1">我的</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <i class="fa fa-bell cursor-pointer"></i>
+                    <span class="absolute -top-1 -right-1 bg-secondary text-primary text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-2">
+                    <img src="https://picsum.photos/id/1074/100/100" alt="用户头像" class="w-8 h-8 rounded-full object-cover">
+                    <span>秦腔爱好者</span>
+                </div>
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div class="md:hidden bg-primary border-t border-white/10 hidden" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="index.html" class="py-2 hover:text-secondary transition-colors">首页</a>
+                <a href="discovery.html" class="py-2 hover:text-secondary transition-colors">发现</a>
+                <a href="community.html" class="py-2 hover:text-secondary transition-colors">社区</a>
+                <a href="profile.html" class="py-2 text-secondary">我的</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- 个人中心横幅 -->
+        <section class="relative h-40 md:h-64 overflow-hidden">
+            <img src="https://picsum.photos/id/1056/1600/800" alt="个人中心" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                <h2 class="text-2xl md:text-4xl font-serif font-bold text-white">个人中心</h2>
+            </div>
+        </section>
+
+        <!-- 个人中心导航 -->
+        <section class="bg-white sticky top-16 z-40 shadow-sm">
+            <div class="container mx-auto px-4 py-3 overflow-x-auto scrollbar-hide">
+                <div class="flex space-x-2 min-w-max">
+                    <button class="px-4 py-2 bg-primary text-white rounded-full">个人信息</button>
+                    <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">内容管理</button>
+                    <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">权益与订单</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 个人信息管理 -->
+        <section class="py-6 bg-white">
+            <div class="container mx-auto px-4">
+                <h3 class="text-xl font-bold mb-6">个人信息管理</h3>
+                
+                <!-- 基本信息 -->
+                <div class="bg-neutral rounded-xl shadow-sm p-6 mb-6">
+                    <h4 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fa fa-user-circle-o text-primary mr-2"></i>
+                        基本信息
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="relative">
+                                <img src="https://picsum.photos/id/1074/200/200" alt="用户头像" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md">
+                                <div class="absolute bottom-0 right-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white cursor-pointer">
+                                    <i class="fa fa-camera"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <input type="text" value="秦腔爱好者" class="bg-white border border-gray-200 rounded-lg px-3 py-1 w-40 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                                    <button class="bg-primary text-white text-xs px-2 py-1 rounded">保存</button>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600 mb-2">
+                                    <div class="flex items-center">
+                                        <i class="fa fa-calendar-o mr-1"></i>
+                                        <span>注册于 2023-05-15</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fa fa-user-o mr-1"></i>
+                                        <select class="bg-white border border-gray-200 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50">
+                                            <option>男</option>
+                                            <option>女</option>
+                                            <option>保密</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-600">
+                                    <div class="flex items-center">
+                                        <i class="fa fa-map-marker mr-1"></i>
+                                        <select class="bg-white border border-gray-200 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50">
+                                            <option>陕西省</option>
+                                            <option>北京市</option>
+                                            <option>上海市</option>
+                                        </select>
+                                        <select class="bg-white border border-gray-200 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50">
+                                            <option>西安市</option>
+                                            <option>咸阳市</option>
+                                            <option>宝鸡市</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">个性签名</label>
+                                <textarea class="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 h-20 focus:outline-none focus:ring-2 focus:ring-primary/50">秦腔爱好者，致力于传承和弘扬秦腔文化。</textarea>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa fa-trophy text-secondary"></i>
+                                    <span class="text-sm font-medium">社区活跃用户</span>
+                                </div>
+                                <button class="bg-primary hover:bg-primary/90 text-white px-4 py-1 rounded-lg text-sm transition-colors">
+                                    保存修改
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 账号安全 -->
+                <div class="bg-neutral rounded-xl shadow-sm p-6 mb-6">
+                    <h4 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fa fa-shield text-primary mr-2"></i>
+                        账号安全
+                    </h4>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                    <i class="fa fa-envelope-o"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">邮箱绑定</h5>
+                                    <p class="text-sm text-gray-500">已绑定: qin*ng@example.com</p>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-primary/80 text-sm">
+                                修改
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                    <i class="fa fa-mobile"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">手机绑定</h5>
+                                    <p class="text-sm text-gray-500">已绑定: 138****6789</p>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-primary/80 text-sm">
+                                修改
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                    <i class="fa fa-lock"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">密码修改</h5>
+                                    <p class="text-sm text-gray-500">上次修改: 3个月前</p>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-primary/80 text-sm">
+                                修改
+                            </button>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                    <i class="fa fa-id-card-o"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">实名认证</h5>
+                                    <p class="text-sm text-gray-500">未认证</p>
+                                </div>
+                            </div>
+                            <button class="text-primary hover:text-primary/80 text-sm">
+                                立即认证
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 内容管理 -->
+        <section class="py-6 bg-white">
+            <div class="container mx-auto px-4">
+                <h3 class="text-xl font-bold mb-6">内容管理</h3>
+                
+                <!-- 收藏与关注 -->
+                <div class="bg-neutral rounded-xl shadow-sm p-6 mb-6">
+                    <h4 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fa fa-star-o text-primary mr-2"></i>
+                        收藏与关注
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <button class="bg-white hover:bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa fa-bookmark-o text-primary"></i>
+                            <span>收藏的帖子</span>
+                            <span class="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full">24</span>
+                        </button>
+                        <button class="bg-white hover:bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa fa-user-o text-primary"></i>
+                            <span>关注的用户</span>
+                            <span class="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full">16</span>
+                        </button>
+                        <button class="bg-white hover:bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa fa-tags text-primary"></i>
+                            <span>关注的话题</span>
+                            <span class="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full">8</span>
+                        </button>
+                    </div>
+                    
+                    <!-- 收藏的帖子列表 -->
+                    <div class="bg-white rounded-lg p-4">
+                        <h5 class="font-medium mb-3">最近收藏的帖子</h5>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                                <img src="https://picsum.photos/id/1059/100/100" alt="帖子缩略图" class="w-16 h-16 rounded-lg object-cover">
+                                <div class="flex-grow">
+                                    <h6 class="font-medium text-sm">《三滴血》中"虎口缘"一折的情感分析</h6>
+                                    <p class="text-xs text-gray-500 truncate">今天看了李梅老师表演的《三滴血》中"虎口缘"一折，被深深打动...</p>
+                                    <div class="flex items-center justify-between mt-1">
+                                        <div class="flex items-center space-x-3 text-xs text-gray-500">
+                                            <span>秦腔爱好者123</span>
+                                            <span>2小时前</span>
+                                        </div>
+                                        <button class="text-gray-400 hover:text-primary transition-colors">
+                                            <i class="fa fa-bookmark"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                                <img src="https://picsum.photos/id/1064/100/100" alt="帖子缩略图" class="w-16 h-16 rounded-lg object-cover">
+                                <div class="flex-grow">
+                                    <h6 class="font-medium text-sm">从《斩单通》看秦腔净角的表演艺术</h6>
+                                    <p class="text-xs text-gray-500 truncate">秦腔净角在表演上有着独特的艺术风格，尤其是在《斩单通》中...</p>
+                                    <div class="flex items-center justify-between mt-1">
+                                        <div class="flex items-center space-x-3 text-xs text-gray-500">
+                                            <span>秦腔研习者</span>
+                                            <span>昨天</span>
+                                        </div>
+                                        <button class="text-gray-400 hover:text-primary transition-colors">
+                                            <i class="fa fa-bookmark"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <a href="#" class="text-primary hover:underline text-sm">查看全部收藏</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 创作中心 -->
+                <div class="bg-neutral rounded-xl shadow-sm p-6 mb-6">
+                    <h4 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fa fa-pencil-square-o text-primary mr-2"></i>
+                        创作中心
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <button class="bg-white hover:bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa fa-comment-o text-primary"></i>
+                            <span>我的帖子</span>
+                            <span class="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full">12</span>
+                        </button>
+                        <button class="bg-white hover:bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa fa-comments-o text-primary"></i>
+                            <span>我的评论</span>
+                            <span class="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full">46</span>
+                        </button>
+                        <button class="bg-white hover:bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center justify-center space-x-2 transition-colors">
+                            <i class="fa fa-trophy text-primary"></i>
+                            <span>我的作品</span>
+                            <span class="bg-primary/10 text-primary text-xs px-2 py-0.5 rounded-full">3</span>
+                        </button>
+                    </div>
+                    
+                    <!-- 我的帖子列表 -->
+                    <div class="bg-white rounded-lg p-4">
+                        <h5 class="font-medium mb-3">最近发布的帖子</h5>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                                <div class="flex-grow mr-3">
+                                    <h6 class="font-medium text-sm">请教各位老师，如何练习秦腔的"二六板"唱腔？</h6>
+                                    <div class="flex items-center space-x-3 text-xs text-gray-500 mt-1">
+                                        <span>3天前</span>
+                                        <span>42赞</span>
+                                        <span>18评论</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-gray-500 hover:text-primary transition-colors">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button class="text-gray-500 hover:text-red-500 transition-colors">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                                <div class="flex-grow mr-3">
+                                    <h6 class="font-medium text-sm">分享一段我演唱的《火焰驹》选段</h6>
+                                    <div class="flex items-center space-x-3 text-xs text-gray-500 mt-1">
+                                        <span>1周前</span>
+                                        <span>78赞</span>
+                                        <span>32评论</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-gray-500 hover:text-primary transition-colors">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button class="text-gray-500 hover:text-red-500 transition-colors">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <a href="#" class="text-primary hover:underline text-sm">查看全部帖子</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 权益与订单 -->
+        <section class="py-6 bg-white">
+            <div class="container mx-auto px-4">
+                <h3 class="text-xl font-bold mb-6">权益与订单</h3>
+                
+                <!-- 会员权益 -->
+                <div class="bg-neutral rounded-xl shadow-sm p-6 mb-6">
+                    <h4 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fa fa-diamond text-primary mr-2"></i>
+                        会员权益
+                    </h4>
+                    
+                    <div class="bg-white rounded-lg p-4 mb-4">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h5 class="font-medium">青铜会员</h5>
+                                <div class="flex items-center space-x-2 mt-1">
+                                    <div class="w-24 bg-gray-200 rounded-full h-2">
+                                        <div class="bg-secondary h-2 rounded-full" style="width: 30%"></div>
+                                    </div>
+                                    <span class="text-xs text-gray-500">距离白银会员还需 120 积分</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-medium">剩余有效期</p>
+                                <p class="text-primary">180天</p>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                            <div class="bg-neutral rounded-lg p-3 text-center">
+                                <div class="text-primary text-2xl mb-1">
+                                    <i class="fa fa-play-circle-o"></i>
+                                </div>
+                                <p class="text-sm">无广告观看</p>
+                            </div>
+                            <div class="bg-neutral rounded-lg p-3 text-center">
+                                <div class="text-primary text-2xl mb-1">
+                                    <i class="fa fa-ticket"></i>
+                                </div>
+                                <p class="text-sm">优先参与活动</p>
+                            </div>
+                            <div class="bg-neutral rounded-lg p-3 text-center">
+                                <div class="text-primary text-2xl mb-1">
+                                    <i class="fa fa-gift"></i>
+                                </div>
+                                <p class="text-sm">文创产品95折</p>
+                            </div>
+                            <div class="bg-neutral rounded-lg p-3 text-center">
+                                <div class="text-primary text-2xl mb-1">
+                                    <i class="fa fa-user-circle-o"></i>
+                                </div>
+                                <p class="text-sm">专属客服</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg transition-colors">
+                                立即续费
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 订单管理 -->
+                <div class="bg-neutral rounded-xl shadow-sm p-6 mb-6">
+                    <h4 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fa fa-shopping-cart text-primary mr-2"></i>
+                        订单管理
+                    </h4>
+                    
+                    <div class="bg-white rounded-lg p-4">
+                        <div class="flex items-center space-x-2 mb-4 overflow-x-auto scrollbar-hide">
+                            <button class="px-4 py-2 bg-primary text-white rounded-full whitespace-nowrap">全部订单</button>
+                            <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors whitespace-nowrap">待支付</button>
+                            <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors whitespace-nowrap">已支付</button>
+                            <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors whitespace-nowrap">已完成</button>
+                            <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors whitespace-nowrap">已取消</button>
+                        </div>
+                        
+                        <!-- 订单列表 -->
+                        <div class="space-y-4">
+                            <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                <div class="bg-gray-50 px-4 py-2 flex items-center justify-between text-sm">
+                                    <span>订单号: 20250524123456789</span>
+                                    <span class="text-primary">已支付</span>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex items-start space-x-3 mb-3">
+                                        <img src="https://picsum.photos/id/1067/100/100" alt="商品图片" class="w-16 h-16 rounded-lg object-cover">
+                                        <div class="flex-grow">
+                                            <h6 class="font-medium">秦腔数字藏品《三滴血》珍藏版</h6>
+                                            <p class="text-sm text-gray-500">购买时间: 2025-05-20 14:30</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-medium">¥198.00</p>
+                                            <p class="text-xs text-gray-500">x1</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                                        <span class="text-sm">实付款: <span class="font-medium">¥198.00</span></span>
+                                        <div class="flex items-center space-x-2">
+                                            <button class="border border-gray-200 text-gray-600 px-3 py-1 rounded text-sm hover:bg-gray-50 transition-colors">
+                                                查看详情
+                                            </button>
+                                            <button class="border border-primary text-primary px-3 py-1 rounded text-sm hover:bg-primary/5 transition-colors">
+                                                查看藏品
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                <div class="bg-gray-50 px-4 py-2 flex items-center justify-between text-sm">
+                                    <span>订单号: 20250518987654321</span>
+                                    <span class="text-primary">已完成</span>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex items-start space-x-3 mb-3">
+                                        <img src="https://picsum.photos/id/1068/100/100" alt="商品图片" class="w-16 h-16 rounded-lg object-cover">
+                                        <div class="flex-grow">
+                                            <h6 class="font-medium">秦腔文创 - 脸谱钥匙扣套装</h6>
+                                            <p class="text-sm text-gray-500">购买时间: 2025-05-18 10:15</p>
+                                            <p class="text-sm text-gray-500">物流状态: 已签收</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-medium">¥88.00</p>
+                                            <p class="text-xs text-gray-500">x1</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                                        <span class="text-sm">实付款: <span class="font-medium">¥88.00</span></span>
+                                        <div class="flex items-center space-x-2">
+                                            <button class="border border-gray-200 text-gray-600 px-3 py-1 rounded text-sm hover:bg-gray-50 transition-colors">
+                                                查看详情
+                                            </button>
+                                            <button class="border border-primary text-primary px-3 py-1 rounded text-sm hover:bg-primary/5 transition-colors">
+                                                评价商品
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <a href="#" class="text-primary hover:underline text-sm">查看全部订单</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <i class="fa fa-music text-xl"></i>
+                        <h3 class="text-lg font-serif font-bold">秦腔文化网</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-3">
+                        传承秦腔文化，弘扬民族艺术
+                    </p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="text-white hover:text-secondary transition-colors">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-secondary transition-colors">
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-secondary transition-colors">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-3">快速链接</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">秦腔简介</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">名家名段</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">演出信息</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-3">社区</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">用户交流社区</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">虚拟偶像</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">文创产品</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">活动日历</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-3">联系我们</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start space-x-2">
+                            <i class="fa fa-map-marker mt-1"></i>
+                            <span class="text-gray-300">陕西省西安市碑林区文艺北路133号</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa fa-phone"></i>
+                            <span class="text-gray-300">029-87801234</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="text-gray-300">contact@qinopera.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/20 mt-6 pt-6 text-center text-gray-400 text-sm">
+                © 2025 秦腔文化网. 保留所有权利.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 个人中心导航切换
+        document.querySelectorAll('section:nth-of-type(2) button').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('section:nth-of-type(2) button').forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('bg-gray-100', 'hover:bg-gray-200');
+                });
+                this.classList.remove('bg-gray-100', 'hover:bg-gray-200');
+                this.classList.add('bg-primary', 'text-white');
+            });
+        });
+        
+        // 模拟表单提交
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('保存') || button.textContent.includes('修改') || button.textContent.includes('提交')) {
+                button.addEventListener('click', function() {
+                    alert('表单提交功能将在未来版本中实现');
+                });
+            }
+        });
+    </script>
+</body>
+</html>    
